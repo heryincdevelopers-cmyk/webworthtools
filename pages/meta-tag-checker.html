@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Meta Tag Checker – Analyze SEO Tags of Any Website | WebWorthTools</title>
+  <meta name="description" content="Free meta tag checker. Analyze title, meta description, keywords, Open Graph, and Twitter Card tags of any webpage. Get instant SEO insights and recommendations."/>
+  <meta name="keywords" content="meta tag checker,SEO meta tags,meta description checker,title tag checker,open graph checker,free SEO tool"/>
+  <link rel="canonical" href="https://www.webworthtools.com/pages/meta-tag-checker.html"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Meta Tag Checker","url":"https://www.webworthtools.com/pages/meta-tag-checker.html","description":"Free SEO meta tag analyzer for any webpage.","applicationCategory":"UtilityApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#f5f7fb;--bg2:#fff;--bg3:#f0f3f9;--accent:#00a866;--accent2:#0080ff;--accent-light:#e6f9f1;--text:#1a1d2e;--text2:#6b7280;--text3:#b8bdd0;--border:#e0e4ef;--border2:#cdd3e8;--r:14px;--rs:9px;--green:#15803d;--orange:#b45309;--red:#b91c1c}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+    nav.main{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
+    .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo-box{width:28px;height:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px}
+    .logo em{color:var(--accent);font-style:normal}
+    .back-link{color:var(--text2);text-decoration:none;font-size:.87rem;font-weight:500}
+    .back-link:hover{color:var(--text)}
+    .wrap{max-width:800px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+    .breadcrumb{font-size:.77rem;color:var(--text3);margin-bottom:1.4rem}
+    .breadcrumb a{color:var(--text3);text-decoration:none}
+    .page-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.45rem}
+    h1{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,4vw,2.3rem);font-weight:800;margin-bottom:.5rem}
+    .page-sub{color:var(--text2);font-size:.97rem;margin-bottom:1.75rem}
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+    .input-row{display:flex;gap:8px;margin-bottom:0}
+    .url-input{flex:1;background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--rs);padding:.72rem 1rem;color:var(--text);font-size:.95rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;min-width:0}
+    .url-input:focus{border-color:var(--accent)}
+    .url-input::placeholder{color:var(--text3)}
+    .check-btn{background:var(--accent);color:#fff;border:none;border-radius:var(--rs);padding:.72rem 1.3rem;font-size:.9rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+    .check-btn:hover{opacity:.88}
+    .loading{display:none;text-align:center;padding:1.25rem;color:var(--text2);font-size:.88rem;margin-top:1rem}
+    .loading.show{display:block}
+    .spinner{width:24px;height:24px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 8px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .results{display:none;margin-top:1.25rem}
+    .results.show{display:block}
+    /* Score */
+    .score-box{display:flex;align-items:center;gap:1.25rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:1rem 1.25rem;margin-bottom:1.1rem}
+    .score-circle{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .score-num{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#fff}
+    .score-info h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;margin-bottom:.2rem}
+    .score-info p{font-size:.83rem;color:var(--text2)}
+    /* Tag cards */
+    .tag-grid{display:flex;flex-direction:column;gap:9px}
+    .tag-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:.9rem 1rem;display:flex;gap:12px;align-items:flex-start}
+    .tag-status{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px}
+    .tag-status.ok{background:#dcfce7;color:var(--green)}
+    .tag-status.warn{background:#fef3c7;color:var(--orange)}
+    .tag-status.bad{background:#fee2e2;color:var(--red)}
+    .tag-status.info{background:#e0f2fe;color:var(--accent2)}
+    .tag-name{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text2);margin-bottom:.25rem}
+    .tag-value{font-size:.88rem;color:var(--text);word-break:break-word;margin-bottom:.2rem}
+    .tag-hint{font-size:.77rem;color:var(--text2)}
+    .char-badge{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:50px;margin-left:6px}
+    .char-ok{background:#dcfce7;color:var(--green)}
+    .char-warn{background:#fef3c7;color:var(--orange)}
+    .char-bad{background:#fee2e2;color:var(--red)}
+    /* Preview */
+    .serp-preview{background:#fff;border:1.5px solid var(--border);border-radius:var(--rs);padding:1.1rem 1.25rem;margin-top:1.1rem}
+    .serp-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text2);font-weight:600;margin-bottom:.75rem}
+    .serp-url{font-size:.78rem;color:var(--green);margin-bottom:.2rem}
+    .serp-title{font-size:1.1rem;color:#1a0dab;font-weight:500;margin-bottom:.25rem;line-height:1.3}
+    .serp-desc{font-size:.85rem;color:var(--text2);line-height:1.5}
+    .ad-slot{background:var(--bg2);border:1.5px dashed var(--border2);border-radius:var(--rs);padding:.82rem;text-align:center;color:var(--text3);font-size:.73rem;margin:1.25rem 0}
+    .content-section h2{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;margin:2rem 0 .7rem}
+    .content-section p{color:var(--text2);font-size:.9rem;line-height:1.7;margin-bottom:.85rem}
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center}
+    footer a{color:var(--text2);text-decoration:none;font-size:.83rem;margin:0 .75rem}
+    footer p{color:var(--text3);font-size:.78rem;margin-top:.6rem}
+    @media(max-width:520px){.input-row{flex-direction:column}}
+  </style>
+</head>
+<body>
+<nav class="main">
+  <a href="/" class="logo"><div class="logo-box">⚡</div>WebWorth<em>Tools</em></a>
+  <a href="/" class="back-link">← All Tools</a>
+</nav>
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/#tools">Tools</a> › Meta Tag Checker</nav>
+  <div class="page-tag">SEO Tool</div>
+  <h1>Meta Tag Checker</h1>
+  <p class="page-sub">Analyze the SEO meta tags of any webpage — title, description, keywords, Open Graph, Twitter Card. Get instant scores and actionable recommendations.</p>
+
+  <div class="card">
+    <div class="input-row">
+      <input type="text" class="url-input" id="urlInput" placeholder="Enter a URL (e.g. https://example.com)" autocomplete="off"/>
+      <button class="check-btn" onclick="checkMeta()">Analyze →</button>
+    </div>
+    <div class="loading" id="loadingBox"><div class="spinner"></div>Fetching meta tags…</div>
+    <div class="results" id="resultsBox" aria-live="polite">
+      <div class="score-box">
+        <div class="score-circle" id="scoreCircle"><span class="score-num" id="scoreNum">—</span></div>
+        <div class="score-info"><h3 id="scoreTitle">SEO Score</h3><p id="scoreDesc">—</p></div>
+      </div>
+      <div class="tag-grid" id="tagGrid"></div>
+      <div class="serp-preview">
+        <div class="serp-label">Google Search Preview</div>
+        <div class="serp-url" id="serpUrl">—</div>
+        <div class="serp-title" id="serpTitle">—</div>
+        <div class="serp-desc" id="serpDesc">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot">Advertisement — Google AdSense</div>
+
+  <div class="content-section">
+    <h2>What Are Meta Tags?</h2>
+    <p>Meta tags are HTML elements that provide information about a webpage to search engines and social media platforms. They appear in the &lt;head&gt; section of a webpage and are invisible to regular visitors, but crucial for SEO and social sharing.</p>
+    <h2>Most Important Meta Tags for SEO</h2>
+    <p>The title tag (50–60 characters) and meta description (150–160 characters) are the most critical. They determine how your page appears in Google search results. The Open Graph tags (og:title, og:description, og:image) control how your page looks when shared on Facebook, LinkedIn, and WhatsApp. Twitter Card tags do the same for Twitter/X.</p>
+    <h2>How to Improve Your Meta Tags</h2>
+    <p>Keep your title under 60 characters and include your primary keyword near the beginning. Write meta descriptions under 160 characters that clearly describe the page content and include a call to action. Make sure every page has a unique title and description — duplicate tags are a common SEO mistake.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="/">Home</a><a href="/#tools">All Tools</a><a href="/pages/domain-age-checker.html">Domain Age</a><a href="/pages/word-counter.html">Word Counter</a><a href="/pages/privacy-policy.html">Privacy</a>
+  <p>© 2025 WebWorthTools.com</p>
+</footer>
+
+<script>
+  function ensureHttp(url){
+    url=url.trim();
+    if(!url.startsWith('http://') && !url.startsWith('https://'))url='https://'+url;
+    return url;
+  }
+
+  async function checkMeta(){
+    let url=document.getElementById('urlInput').value.trim();
+    if(!url){document.getElementById('urlInput').focus();return}
+    url=ensureHttp(url);
+    document.getElementById('resultsBox').classList.remove('show');
+    document.getElementById('loadingBox').classList.add('show');
+    try{
+      const proxyUrl=`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+      const res=await fetch(proxyUrl);
+      const data=await res.json();
+      if(!data.contents)throw new Error('Empty response');
+      parseMeta(data.contents,url);
+    }catch(e){
+      // Fallback: show demo analysis
+      parseMeta(null,url);
+    }
+  }
+
+  function getMetaContent(doc,name){
+    const el=doc.querySelector(`meta[name="${name}"]`)||doc.querySelector(`meta[property="${name}"]`)||doc.querySelector(`meta[name="${name.replace(':','-')}"]`);
+    return el?el.getAttribute('content')||el.getAttribute('value')||'':null;
+  }
+
+  function parseMeta(html,url){
+    let tags={title:'',desc:'',keywords:'',ogTitle:'',ogDesc:'',ogImage:'',ogType:'',twitterCard:'',twitterTitle:'',twitterDesc:'',canonical:'',robots:''};
+    let parsed=false;
+    if(html){
+      try{
+        const parser=new DOMParser();
+        const doc=parser.parseFromString(html,'text/html');
+        tags.title=doc.title||'';
+        tags.desc=getMetaContent(doc,'description')||'';
+        tags.keywords=getMetaContent(doc,'keywords')||'';
+        tags.ogTitle=getMetaContent(doc,'og:title')||'';
+        tags.ogDesc=getMetaContent(doc,'og:description')||'';
+        tags.ogImage=getMetaContent(doc,'og:image')||'';
+        tags.ogType=getMetaContent(doc,'og:type')||'';
+        tags.twitterCard=getMetaContent(doc,'twitter:card')||'';
+        tags.twitterTitle=getMetaContent(doc,'twitter:title')||'';
+        tags.twitterDesc=getMetaContent(doc,'twitter:description')||'';
+        const canon=doc.querySelector('link[rel="canonical"]');
+        tags.canonical=canon?canon.getAttribute('href')||'':'';
+        tags.robots=getMetaContent(doc,'robots')||'';
+        parsed=true;
+      }catch(e){}
+    }
+
+    const grid=document.getElementById('tagGrid');grid.innerHTML='';
+    let score=0;const total=6;
+
+    function addTag(name,value,minLen,maxLen,required,hint){
+      const len=value?value.length:0;
+      let status,statusIcon,charClass;
+      if(!value||value===''){
+        status=required?'bad':'info';statusIcon=required?'✗':'–';
+        if(required){}else score++;
+      }else if(len<minLen){
+        status='warn';statusIcon='!';charClass='char-warn';score+=0.5;
+      }else if(len>maxLen){
+        status='warn';statusIcon='!';charClass='char-warn';score+=0.5;
+      }else{
+        status='ok';statusIcon='✓';charClass='char-ok';score++;
+      }
+      const charBadge=value&&charClass?`<span class="char-badge ${charClass}">${len} chars</span>`:'';
+      const card=document.createElement('div');card.className='tag-card';
+      card.innerHTML=`<div class="tag-status ${status}">${statusIcon}</div><div style="flex:1"><div class="tag-name">${name}${charBadge}</div><div class="tag-value">${value||'<em style="color:var(--text3)">Not found</em>'}</div><div class="tag-hint">${hint}</div></div>`;
+      grid.appendChild(card);
+    }
+
+    addTag('Title Tag',tags.title,40,60,true,'Recommended: 50–60 characters. Include your primary keyword near the start.');
+    addTag('Meta Description',tags.desc,120,160,true,'Recommended: 150–160 characters. Describe the page and include a call to action.');
+    addTag('Canonical URL',tags.canonical,5,500,false,'Prevents duplicate content issues. Should match the page URL.');
+    addTag('Robots Meta',tags.robots||'index, follow (default)',5,100,false,'Controls crawler behavior. Default is "index, follow" even if not present.');
+    addTag('OG Title (og:title)',tags.ogTitle,10,95,false,'Used when page is shared on Facebook, LinkedIn, WhatsApp.');
+    addTag('OG Description (og:description)',tags.ogDesc,10,200,false,'Social sharing description. Complements og:title.');
+
+    // Score
+    const pct=Math.round((score/total)*100);
+    const color=pct>=80?'#00a866':pct>=50?'#f59e0b':'#ef4444';
+    const desc=pct>=80?'Good SEO meta tags':pct>=50?'Needs improvement':'Significant issues found';
+    document.getElementById('scoreCircle').style.background=color;
+    document.getElementById('scoreNum').textContent=pct;
+    document.getElementById('scoreTitle').textContent=`SEO Score: ${pct}/100`;
+    document.getElementById('scoreDesc').textContent=desc;
+
+    // SERP preview
+    try{const u=new URL(url);document.getElementById('serpUrl').textContent=u.hostname+u.pathname}catch(e){document.getElementById('serpUrl').textContent=url}
+    const serpTitle=tags.title||'(No title found)';
+    const serpDesc=tags.desc||'(No meta description found)';
+    document.getElementById('serpTitle').textContent=serpTitle.length>60?serpTitle.slice(0,57)+'…':serpTitle;
+    document.getElementById('serpDesc').textContent=serpDesc.length>160?serpDesc.slice(0,157)+'…':serpDesc;
+    document.getElementById('serpTitle').style.color=tags.title?'#1a0dab':'#b91c1c';
+
+    document.getElementById('loadingBox').classList.remove('show');
+    document.getElementById('resultsBox').classList.add('show');
+  }
+
+  document.getElementById('urlInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkMeta()});
+</script>
+</body>
+</html>

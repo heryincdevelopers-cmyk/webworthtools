@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>IP Address Lookup – Find Your IP & Geolocation | WebWorthTools</title>
+  <meta name="description" content="Find your IP address instantly and get full geolocation details — country, city, ISP, timezone, coordinates. Free IP lookup tool, no registration needed."/>
+  <meta name="keywords" content="IP address lookup,what is my IP,IP geolocation,find my IP address,IP checker,IP location finder"/>
+  <link rel="canonical" href="https://www.webworthtools.com/pages/ip-lookup.html"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"IP Address Lookup","url":"https://www.webworthtools.com/pages/ip-lookup.html","description":"Free IP address lookup and geolocation tool.","applicationCategory":"UtilityApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#f5f7fb;--bg2:#fff;--bg3:#f0f3f9;--accent:#00a866;--accent2:#0080ff;--accent-light:#e6f9f1;--text:#1a1d2e;--text2:#6b7280;--text3:#b8bdd0;--border:#e0e4ef;--border2:#cdd3e8;--r:14px;--rs:9px}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+    nav.main{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
+    .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo-box{width:28px;height:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px}
+    .logo em{color:var(--accent);font-style:normal}
+    .back-link{color:var(--text2);text-decoration:none;font-size:.87rem;font-weight:500}
+    .back-link:hover{color:var(--text)}
+    .wrap{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+    .breadcrumb{font-size:.77rem;color:var(--text3);margin-bottom:1.4rem}
+    .breadcrumb a{color:var(--text3);text-decoration:none}
+    .page-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.45rem}
+    h1{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,4vw,2.3rem);font-weight:800;margin-bottom:.5rem}
+    .page-sub{color:var(--text2);font-size:.97rem;margin-bottom:1.75rem}
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+    .my-ip-box{text-align:center;padding:1.6rem;background:linear-gradient(135deg,var(--accent-light),#e8f0ff);border:1.5px solid #b3ecd4;border-radius:var(--rs);margin-bottom:1.4rem}
+    .my-ip-label{font-size:.77rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text2);font-weight:600;margin-bottom:.5rem}
+    .my-ip-value{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--accent);letter-spacing:.04em}
+    .copy-btn{margin-top:.7rem;background:transparent;border:1.5px solid var(--border);color:var(--text2);padding:.38rem 1rem;border-radius:50px;font-size:.82rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;transition:all .2s}
+    .copy-btn:hover{border-color:var(--accent);color:var(--accent)}
+    .section-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text2);font-weight:600;margin-bottom:.55rem}
+    .lookup-row{display:flex;gap:8px;margin-bottom:1.25rem}
+    .ip-input{flex:1;background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--rs);padding:.72rem 1rem;color:var(--text);font-size:.95rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;min-width:0}
+    .ip-input:focus{border-color:var(--accent)}
+    .ip-input::placeholder{color:var(--text3)}
+    .lookup-btn{background:var(--accent);color:#fff;border:none;border-radius:var(--rs);padding:.72rem 1.25rem;font-size:.9rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+    .lookup-btn:hover{opacity:.88}
+    .loading-msg{text-align:center;padding:1.5rem;color:var(--text2);font-size:.9rem;display:none}
+    .spinner{width:24px;height:24px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 8px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+    .info-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:.88rem 1rem;display:flex;gap:12px;align-items:flex-start}
+    .info-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+    .info-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text2);margin-bottom:3px;font-weight:600}
+    .info-val{font-size:.93rem;font-weight:600;color:var(--text);word-break:break-all}
+    .ad-slot{background:var(--bg2);border:1.5px dashed var(--border2);border-radius:var(--rs);padding:.82rem;text-align:center;color:var(--text3);font-size:.73rem;margin:1.25rem 0}
+    .content-section h2{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;margin:2rem 0 .7rem}
+    .content-section p{color:var(--text2);font-size:.9rem;line-height:1.7;margin-bottom:.85rem}
+    code{background:var(--bg3);padding:2px 6px;border-radius:4px;font-size:.85rem;border:1px solid var(--border)}
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center}
+    footer a{color:var(--text2);text-decoration:none;font-size:.83rem;margin:0 .75rem}
+    footer p{color:var(--text3);font-size:.78rem;margin-top:.6rem}
+    @media(max-width:520px){.info-grid{grid-template-columns:1fr}.lookup-row{flex-direction:column}}
+  </style>
+</head>
+<body>
+<nav class="main">
+  <a href="/" class="logo"><div class="logo-box">⚡</div>WebWorth<em>Tools</em></a>
+  <a href="/" class="back-link">← All Tools</a>
+</nav>
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/#tools">Tools</a> › IP Lookup</nav>
+  <div class="page-tag">Network Tool</div>
+  <h1>IP Address Lookup</h1>
+  <p class="page-sub">Instantly find your IP address and detailed geolocation information — country, city, ISP, timezone, and coordinates. Or look up any other IP address.</p>
+
+  <div class="card">
+    <div class="my-ip-box">
+      <div class="my-ip-label">Your IP Address</div>
+      <div class="my-ip-value" id="myIP">Detecting…</div>
+      <button class="copy-btn" onclick="copyIP()">📋 Copy IP Address</button>
+    </div>
+
+    <div class="section-label">Look Up Any IP Address</div>
+    <div class="lookup-row">
+      <input type="text" class="ip-input" id="ipInput" placeholder="e.g. 8.8.8.8 or leave blank for your IP"/>
+      <button class="lookup-btn" onclick="lookupIP()">Lookup →</button>
+    </div>
+
+    <div id="loadingBox" class="loading-msg"><div class="spinner"></div>Fetching IP data…</div>
+    <div id="resultsBox" style="display:none" aria-live="polite">
+      <div class="info-grid" id="infoGrid"></div>
+    </div>
+  </div>
+
+  <div class="ad-slot">Advertisement — Google AdSense</div>
+
+  <div class="content-section">
+    <h2>What Is an IP Address?</h2>
+    <p>An IP (Internet Protocol) address is a unique numerical label assigned to every device connected to the internet. It serves two main functions: identifying your device (host) and providing its network location for communication.</p>
+    <h2>IPv4 vs IPv6</h2>
+    <p>IPv4 addresses use 32-bit numbers and look like <code>192.168.1.1</code>. IPv6 uses 128-bit numbers like <code>2001:0db8:85a3::8a2e:0370:7334</code>. IPv6 was introduced to handle the exhaustion of IPv4 addresses as the internet grew globally.</p>
+    <h2>What Is IP Geolocation?</h2>
+    <p>IP geolocation maps an IP address to a physical location. While not 100% precise — it typically shows the ISP's server location rather than your exact address — it provides useful information like country, region, city, timezone, and internet service provider. This data is used for content localization, analytics, and security monitoring.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="/">Home</a><a href="/#tools">All Tools</a><a href="/pages/currency-converter.html">Currency Converter</a><a href="/pages/word-counter.html">Word Counter</a><a href="/pages/privacy-policy.html">Privacy</a>
+  <p>© 2025 WebWorthTools.com</p>
+</footer>
+
+<script>
+  let myIPAddress='';
+
+  function displayInfo(data){
+    const fields=[
+      {icon:'🌐',label:'IP Address',val:data.ip||'—'},
+      {icon:'🏳️',label:'Country',val:(data.country_name||data.country||'—')},
+      {icon:'🏙️',label:'City',val:data.city||'—'},
+      {icon:'📍',label:'Region',val:data.region||data.region_name||'—'},
+      {icon:'⏰',label:'Timezone',val:data.timezone||'—'},
+      {icon:'🌍',label:'Coordinates',val:data.latitude&&data.longitude?`${parseFloat(data.latitude).toFixed(4)}, ${parseFloat(data.longitude).toFixed(4)}`:'—'},
+      {icon:'📡',label:'ISP / Organization',val:data.org||data.isp||'—'},
+      {icon:'📮',label:'Postal Code',val:data.postal||data.zip||'—'},
+    ];
+    const grid=document.getElementById('infoGrid');
+    grid.innerHTML='';
+    fields.forEach(f=>{
+      const card=document.createElement('div');
+      card.className='info-card';
+      card.innerHTML=`<div class="info-icon">${f.icon}</div><div><div class="info-label">${f.label}</div><div class="info-val">${f.val}</div></div>`;
+      grid.appendChild(card);
+    });
+    document.getElementById('loadingBox').style.display='none';
+    document.getElementById('resultsBox').style.display='block';
+  }
+
+  async function fetchIP(ip){
+    document.getElementById('loadingBox').style.display='block';
+    document.getElementById('resultsBox').style.display='none';
+    try{
+      const url=ip?`https://ipapi.co/${ip}/json/`:'https://ipapi.co/json/';
+      const res=await fetch(url);
+      const data=await res.json();
+      if(data.error)throw new Error(data.reason||'Invalid IP');
+      if(!ip&&data.ip){myIPAddress=data.ip;document.getElementById('myIP').textContent=data.ip}
+      displayInfo(data);
+    }catch(e){
+      try{
+        const r2=await fetch('https://api.ipify.org?format=json');
+        const d2=await r2.json();
+        myIPAddress=d2.ip;
+        document.getElementById('myIP').textContent=d2.ip;
+        displayInfo({ip:d2.ip,country_name:'—',city:'—',region:'—',timezone:'—',org:'—'});
+      }catch(e2){
+        document.getElementById('myIP').textContent='Could not detect';
+        document.getElementById('loadingBox').style.display='none';
+      }
+    }
+  }
+
+  function lookupIP(){fetchIP(document.getElementById('ipInput').value.trim()||null)}
+
+  function copyIP(){
+    if(!myIPAddress)return;
+    navigator.clipboard.writeText(myIPAddress).then(()=>{
+      const btn=document.querySelector('.copy-btn');
+      btn.textContent='✅ Copied!';
+      setTimeout(()=>btn.textContent='📋 Copy IP Address',2000);
+    });
+  }
+
+  document.getElementById('ipInput').addEventListener('keydown',e=>{if(e.key==='Enter')lookupIP()});
+  fetchIP(null);
+</script>
+</body>
+</html>

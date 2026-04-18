@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Word Counter – Count Words, Characters & Reading Time | WebWorthTools</title>
+  <meta name="description" content="Free online word counter. Instantly count words, characters, sentences, paragraphs, and estimate reading time. Also shows social media character limits for Twitter, Instagram, LinkedIn and more."/>
+  <meta name="keywords" content="word counter,character counter,reading time calculator,word count tool,online word counter,character limit checker"/>
+  <link rel="canonical" href="https://www.webworthtools.com/pages/word-counter.html"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Counter","url":"https://www.webworthtools.com/pages/word-counter.html","description":"Free word counter with reading time and character limit tracking.","applicationCategory":"UtilityApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#f5f7fb;--bg2:#fff;--bg3:#f0f3f9;--accent:#00a866;--accent2:#0080ff;--accent-light:#e6f9f1;--text:#1a1d2e;--text2:#6b7280;--text3:#b8bdd0;--border:#e0e4ef;--border2:#cdd3e8;--r:14px;--rs:9px}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+    nav.main{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
+    .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo-box{width:28px;height:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px}
+    .logo em{color:var(--accent);font-style:normal}
+    .back-link{color:var(--text2);text-decoration:none;font-size:.87rem;font-weight:500}
+    .back-link:hover{color:var(--text)}
+    .wrap{max-width:860px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+    .breadcrumb{font-size:.77rem;color:var(--text3);margin-bottom:1.4rem}
+    .breadcrumb a{color:var(--text3);text-decoration:none}
+    .page-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.45rem}
+    h1{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,4vw,2.3rem);font-weight:800;margin-bottom:.5rem}
+    .page-sub{color:var(--text2);font-size:.97rem;margin-bottom:1.5rem}
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:1.1rem}
+    .stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:.85rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+    .stat-val{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--accent)}
+    .stat-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--text2);margin-top:2px}
+    .editor-wrap{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:1.1rem;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+    .toolbar{display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:7px;background:var(--bg3)}
+    .toolbar-btns{display:flex;gap:7px}
+    .tbtn{background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:.3rem .75rem;border-radius:var(--rs);font-size:.8rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;transition:all .2s}
+    .tbtn:hover{border-color:var(--accent);color:var(--accent)}
+    .tbtn.danger:hover{border-color:#ef4444;color:#ef4444}
+    .char-count{font-size:.78rem;color:var(--text3);font-weight:500}
+    textarea{width:100%;min-height:240px;background:var(--bg2);border:none;padding:1.1rem 1.25rem;color:var(--text);font-size:.95rem;font-family:'DM Sans',sans-serif;line-height:1.7;resize:vertical;outline:none}
+    textarea::placeholder{color:var(--text3)}
+    .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:1.1rem}
+    .detail-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:.8rem 1rem;display:flex;justify-content:space-between;align-items:center}
+    .detail-label{font-size:.82rem;color:var(--text2);font-weight:500}
+    .detail-val{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800}
+    .limits-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;margin-bottom:1.1rem;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+    .limits-title{font-size:.77rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text2);font-weight:600;margin-bottom:.85rem}
+    .limits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px}
+    .limit-item{background:var(--bg3);border-radius:var(--rs);padding:.6rem .85rem;border:1px solid var(--border)}
+    .limit-platform{font-size:.82rem;font-weight:700;margin-bottom:2px}
+    .limit-chars{color:var(--text2);font-size:.72rem}
+    .limit-bar{height:4px;border-radius:2px;margin-top:6px;background:var(--border);overflow:hidden}
+    .limit-fill{height:100%;border-radius:2px;background:var(--accent);transition:width .3s}
+    .limit-fill.warn{background:#f59e0b}
+    .limit-fill.over{background:#ef4444}
+    .ad-slot{background:var(--bg2);border:1.5px dashed var(--border2);border-radius:var(--rs);padding:.82rem;text-align:center;color:var(--text3);font-size:.73rem;margin:1.25rem 0}
+    .content-section h2{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;margin:2rem 0 .7rem}
+    .content-section p{color:var(--text2);font-size:.9rem;line-height:1.7;margin-bottom:.85rem}
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center}
+    footer a{color:var(--text2);text-decoration:none;font-size:.83rem;margin:0 .75rem}
+    footer p{color:var(--text3);font-size:.78rem;margin-top:.6rem}
+    @media(max-width:600px){.stats-row{grid-template-columns:1fr 1fr}.detail-grid{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<nav class="main">
+  <a href="/" class="logo"><div class="logo-box">⚡</div>WebWorth<em>Tools</em></a>
+  <a href="/" class="back-link">← All Tools</a>
+</nav>
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/#tools">Tools</a> › Word Counter</nav>
+  <div class="page-tag">Writing Tool</div>
+  <h1>Word Counter</h1>
+  <p class="page-sub">Count words, characters, sentences, and paragraphs instantly. See reading time, speaking time, and check your text against social media character limits.</p>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-val" id="s-words">0</div><div class="stat-lbl">Words</div></div>
+    <div class="stat-card"><div class="stat-val" id="s-chars">0</div><div class="stat-lbl">Characters</div></div>
+    <div class="stat-card"><div class="stat-val" id="s-read">0s</div><div class="stat-lbl">Read Time</div></div>
+    <div class="stat-card"><div class="stat-val" id="s-speak">0s</div><div class="stat-lbl">Speak Time</div></div>
+  </div>
+
+  <div class="editor-wrap">
+    <div class="toolbar">
+      <div class="toolbar-btns">
+        <button class="tbtn" onclick="pasteText()">📋 Paste</button>
+        <button class="tbtn" onclick="copyText()">📄 Copy</button>
+        <button class="tbtn danger" onclick="clearText()">🗑 Clear</button>
+      </div>
+      <span class="char-count" id="charDisplay">0 characters</span>
+    </div>
+    <textarea id="editor" placeholder="Start typing or paste your text here — word count updates instantly as you type…" oninput="analyze()"></textarea>
+  </div>
+
+  <div class="detail-grid">
+    <div class="detail-card"><span class="detail-label">Sentences</span><span class="detail-val" id="d-sentences">0</span></div>
+    <div class="detail-card"><span class="detail-label">Paragraphs</span><span class="detail-val" id="d-paragraphs">0</span></div>
+    <div class="detail-card"><span class="detail-label">Avg word length</span><span class="detail-val" id="d-avgword">0</span></div>
+    <div class="detail-card"><span class="detail-label">Unique words</span><span class="detail-val" id="d-unique">0</span></div>
+    <div class="detail-card"><span class="detail-label">Chars (no spaces)</span><span class="detail-val" id="d-nospace">0</span></div>
+    <div class="detail-card"><span class="detail-label">Longest word</span><span class="detail-val" id="d-longest" style="font-size:.85rem;overflow:hidden;text-overflow:ellipsis;max-width:100px;white-space:nowrap">—</span></div>
+  </div>
+
+  <div class="limits-card">
+    <div class="limits-title">📱 Platform Character Limits</div>
+    <div class="limits-grid" id="limitsGrid"></div>
+  </div>
+
+  <div class="ad-slot">Advertisement — Google AdSense (728×90)</div>
+
+  <div class="content-section">
+    <h2>Why Use a Word Counter?</h2>
+    <p>Whether you're writing a blog post, academic essay, social media caption, or SEO meta description, knowing your word and character count is essential. Many platforms have strict character limits, and many content guidelines require minimum word counts for quality and SEO performance.</p>
+    <h2>Reading Time Estimation</h2>
+    <p>Reading time is calculated based on an average adult reading speed of 230 words per minute. Speaking time uses 130 words per minute, which is typical for a natural presentation or podcast pace. These are averages — actual times vary by content complexity and individual pace.</p>
+    <h2>SEO & Word Count Guidelines</h2>
+    <p>Search engines favor well-developed, comprehensive content. Most SEO professionals recommend a minimum of 300 words for basic pages, 1,000+ words for blog posts targeting competitive keywords, and 2,000+ words for pillar content and in-depth guides targeting high-competition topics.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="/">Home</a><a href="/#tools">All Tools</a><a href="/pages/currency-converter.html">Currency Converter</a><a href="/pages/bmi-calculator.html">BMI Calculator</a><a href="/pages/privacy-policy.html">Privacy</a>
+  <p>© 2025 WebWorthTools.com</p>
+</footer>
+
+<script>
+const LIMITS=[
+  {name:'Twitter / X',max:280},{name:'Instagram caption',max:2200},{name:'Facebook post',max:63206},
+  {name:'LinkedIn post',max:3000},{name:'Meta description',max:160},{name:'Meta title',max:60},
+  {name:'YouTube title',max:100},{name:'YouTube desc',max:5000},{name:'TikTok caption',max:2200},{name:'WhatsApp',max:65536}
+];
+
+function fmtTime(s){return s<60?s+'s':Math.floor(s/60)+'m '+(s%60>0?s%60+'s':'')}
+
+function analyze(){
+  const text=document.getElementById('editor').value;
+  const chars=text.length;
+  const charsNoSpace=text.replace(/\s/g,'').length;
+  const words=text.trim()===''?[]:text.trim().split(/\s+/).filter(w=>w.length>0);
+  const wordCount=words.length;
+  const sentences=text.split(/[.!?]+/).filter(s=>s.trim().length>0).length;
+  const paragraphs=text.split(/\n\s*\n/).filter(p=>p.trim().length>0).length||(text.trim().length>0?1:0);
+  const unique=new Set(words.map(w=>w.toLowerCase().replace(/[^a-z]/g,''))).size;
+  const avgWordLen=wordCount>0?(charsNoSpace/wordCount).toFixed(1):0;
+  const longest=words.reduce((a,b)=>b.length>a.length?b:a,'');
+  const readSecs=Math.ceil(wordCount/230*60);
+  const speakSecs=Math.ceil(wordCount/130*60);
+
+  document.getElementById('s-words').textContent=wordCount.toLocaleString();
+  document.getElementById('s-chars').textContent=chars.toLocaleString();
+  document.getElementById('s-read').textContent=fmtTime(readSecs);
+  document.getElementById('s-speak').textContent=fmtTime(speakSecs);
+  document.getElementById('d-sentences').textContent=sentences.toLocaleString();
+  document.getElementById('d-paragraphs').textContent=paragraphs.toLocaleString();
+  document.getElementById('d-avgword').textContent=avgWordLen;
+  document.getElementById('d-unique').textContent=unique.toLocaleString();
+  document.getElementById('d-nospace').textContent=charsNoSpace.toLocaleString();
+  document.getElementById('d-longest').textContent=longest||'—';
+  document.getElementById('charDisplay').textContent=chars.toLocaleString()+' characters';
+  buildLimits(chars);
+}
+
+function buildLimits(chars){
+  const grid=document.getElementById('limitsGrid');grid.innerHTML='';
+  LIMITS.forEach(l=>{
+    const pct=Math.min(100,(chars/l.max)*100);
+    const cls=pct>=100?'over':pct>=80?'warn':'';
+    const remaining=l.max-chars;
+    const el=document.createElement('div');el.className='limit-item';
+    el.innerHTML=`<div class="limit-platform">${l.name}</div><div class="limit-chars">${chars}/${l.max} · ${remaining>=0?remaining+' left':Math.abs(remaining)+' over'}</div><div class="limit-bar"><div class="limit-fill ${cls}" style="width:${Math.min(100,pct).toFixed(1)}%"></div></div>`;
+    grid.appendChild(el);
+  });
+}
+
+function clearText(){document.getElementById('editor').value='';analyze()}
+async function pasteText(){try{const t=await navigator.clipboard.readText();document.getElementById('editor').value=t;analyze()}catch(e){alert('Please paste manually with Ctrl+V / Cmd+V')}}
+function copyText(){const t=document.getElementById('editor').value;if(!t)return;navigator.clipboard.writeText(t).then(()=>{const btn=event.target;btn.textContent='✅ Copied!';setTimeout(()=>btn.textContent='📄 Copy',2000)})}
+
+buildLimits(0);
+</script>
+</body>
+</html>
