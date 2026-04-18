@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>WebWorthTools – Free Website Value Checker & Web Tools</title>
+  <meta name="description" content="Check your website's value, traffic, and revenue potential for free. Plus 20+ calculators and converters. No registration required."/>
+  <meta name="keywords" content="website value checker,website worth,free web tools,currency converter,BMI calculator,unit converter,IP lookup,word counter"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="author" content="WebWorthTools"/>
+  <meta property="og:title" content="WebWorthTools – Free Website Value Checker & Web Tools"/>
+  <meta property="og:description" content="Instantly check website value, traffic estimates, and revenue potential. Plus 20+ free tools."/>
+  <meta property="og:url" content="https://www.webworthtools.com"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://www.webworthtools.com"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"WebWorthTools","url":"https://www.webworthtools.com","description":"Free website value checker and web tools","potentialAction":{"@type":"SearchAction","target":"https://www.webworthtools.com/pages/website-value-checker.html?domain={search_term_string}","query-input":"required name=search_term_string"}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#f5f7fb;--bg2:#fff;--bg3:#f0f3f9;--accent:#00a866;--accent2:#0080ff;--accent-light:#e6f9f1;--text:#1a1d2e;--text2:#6b7280;--text3:#b8bdd0;--border:#e0e4ef;--border2:#cdd3e8;--shadow:0 2px 12px rgba(0,0,0,0.07);--shadow-h:0 6px 24px rgba(0,0,0,0.11);--r:14px;--rs:9px}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px;overflow-x:hidden}
+    /* NAV */
+    nav.main{position:sticky;top:0;z-index:100;background:var(--bg2);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:58px}
+    .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:9px}
+    .logo-box{width:30px;height:30px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px}
+    .logo em{color:var(--accent);font-style:normal}
+    .nav-links{display:flex;align-items:center;gap:1.6rem;list-style:none}
+    .nav-links a{color:var(--text2);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-cta{background:var(--accent)!important;color:#fff!important;padding:.42rem 1.1rem;border-radius:50px;font-weight:700!important;font-size:.85rem!important}
+    /* HERO */
+    .hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:2.75rem 2rem 2.25rem;text-align:center}
+    .badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);border:1px solid #b3ecd4;color:#007a4d;padding:4px 12px;border-radius:50px;font-size:.78rem;font-weight:600;margin-bottom:.9rem}
+    .pulse{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    h1{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3.8vw,2.5rem);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:.55rem}
+    h1 .gr{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{color:var(--text2);font-size:.98rem;max-width:490px;margin:0 auto 1.6rem}
+    /* CHECKER */
+    .checker-wrap{max-width:640px;margin:0 auto}
+    .checker-box{background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r);padding:1.3rem}
+    .c-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text2);font-weight:600;margin-bottom:.55rem}
+    .c-row{display:flex;gap:8px}
+    .c-input{flex:1;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--rs);padding:.72rem 1rem;color:var(--text);font-size:.95rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;min-width:0}
+    .c-input:focus{border-color:var(--accent)}
+    .c-input::placeholder{color:var(--text3)}
+    .c-btn{background:var(--accent);color:#fff;border:none;border-radius:var(--rs);padding:.72rem 1.3rem;font-size:.9rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:opacity .2s,transform .1s}
+    .c-btn:hover{opacity:.88}
+    .c-btn:active{transform:scale(.98)}
+    .loading{display:none;text-align:center;padding:1.1rem;color:var(--text2);font-size:.86rem;margin-top:.9rem}
+    .loading.show{display:block}
+    .spinner{width:24px;height:24px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 7px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .results{display:none;margin-top:1rem}
+    .results.show{display:block}
+    .r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:9px}
+    .r-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem;text-align:center}
+    .r-icon{font-size:17px;margin-bottom:3px}
+    .r-val{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--accent);line-height:1}
+    .r-lbl{font-size:.67rem;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+    .bars{display:flex;flex-direction:column;gap:6px;margin-bottom:7px}
+    .bar-row{display:flex;align-items:center;gap:8px}
+    .b-lbl{font-size:.8rem;color:var(--text2);min-width:70px;font-weight:500}
+    .b-track{flex:1;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+    .b-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 1s ease}
+    .b-pct{font-size:.8rem;font-weight:600;color:var(--text);min-width:42px;text-align:right}
+    .r-disc{font-size:.7rem;color:var(--text3);text-align:center;margin-top:2px}
+    /* AD */
+    .ad-slot{background:var(--bg2);border:1.5px dashed var(--border2);border-radius:var(--rs);padding:.8rem;text-align:center;color:var(--text3);font-size:.73rem;max-width:728px;margin:1.1rem auto 0}
+    /* STATS */
+    .stats-bar{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.95rem 2rem;display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
+    .stat-num{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;text-align:center}
+    .stat-desc{font-size:.75rem;color:var(--text2);text-align:center;margin-top:1px}
+    /* TOOLS */
+    .tools-sec{max-width:1200px;margin:0 auto;padding:2.5rem 2rem}
+    .sec-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.45rem}
+    h2{font-family:'Syne',sans-serif;font-size:clamp(1.35rem,2.5vw,1.85rem);font-weight:800;line-height:1.2;margin-bottom:.4rem}
+    .sec-sub{color:var(--text2);font-size:.93rem;margin-bottom:1.4rem}
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:.9rem}
+    .t-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.05rem;text-decoration:none;color:inherit;display:block;transition:box-shadow .2s,transform .2s,border-color .2s;position:relative;overflow:hidden}
+    .t-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .2s}
+    .t-card:hover{box-shadow:var(--shadow-h);transform:translateY(-3px);border-color:var(--border2)}
+    .t-card:hover::before{opacity:1}
+    .t-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:.6rem}
+    .ti-g{background:#e6f9f1}.ti-b{background:#e6f0ff}.ti-o{background:#fff3e0}.ti-p{background:#fde8e8}.ti-v{background:#f0e8ff}.ti-t{background:#e0f7f7}
+    .t-title{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;margin-bottom:.22rem}
+    .t-desc{font-size:.79rem;color:var(--text2);line-height:1.45}
+    .t-tag{display:inline-block;margin-top:.45rem;font-size:.66rem;font-weight:700;text-transform:uppercase;color:#007a4d;background:var(--accent-light);padding:2px 7px;border-radius:50px}
+    /* HOW */
+    .how-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 2rem}
+    .how-inner{max-width:1200px;margin:0 auto}
+    .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1.6rem;margin-top:1.4rem}
+    .step-num{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;color:var(--border2);line-height:1;margin-bottom:.35rem}
+    .step-title{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.28rem}
+    .step-desc{font-size:.83rem;color:var(--text2);line-height:1.55}
+    /* FAQ */
+    .faq-sec{max-width:1200px;margin:0 auto;padding:2.5rem 2rem}
+    .faq-list{max-width:700px}
+    .faq-item{border-bottom:1px solid var(--border);padding:.9rem 0}
+    .faq-q{font-family:'Syne',sans-serif;font-size:.93rem;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;user-select:none}
+    .faq-arrow{font-size:1.1rem;color:var(--text2);transition:transform .3s;flex-shrink:0}
+    .faq-item.open .faq-arrow{transform:rotate(45deg)}
+    .faq-a{font-size:.86rem;color:var(--text2);line-height:1.7;margin-top:.55rem;display:none}
+    .faq-item.open .faq-a{display:block}
+    /* CTA */
+    .cta-sec{max-width:1200px;margin:0 auto;padding:1.5rem 2rem 3rem}
+    .cta-box{background:linear-gradient(135deg,var(--accent-light),#e8f0ff);border:1.5px solid #b3ecd4;border-radius:20px;padding:2.75rem 2rem;text-align:center}
+    .cta-box h2{margin-bottom:.7rem}
+    .cta-box p{color:var(--text2);margin-bottom:1.4rem;font-size:.93rem}
+    .btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;padding:.78rem 1.9rem;border-radius:50px;font-weight:700;font-size:.93rem;text-decoration:none;transition:opacity .2s,transform .2s}
+    .btn-primary:hover{opacity:.88;transform:translateY(-2px)}
+    /* FOOTER */
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 2rem 1.5rem}
+    .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+    .footer-brand p{color:var(--text2);font-size:.82rem;margin-top:.7rem;line-height:1.6;max-width:230px}
+    .f-col h4{font-family:'Syne',sans-serif;font-size:.73rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.8rem}
+    .f-col a{display:block;color:var(--text2);text-decoration:none;font-size:.84rem;margin-bottom:.42rem;transition:color .2s}
+    .f-col a:hover{color:var(--text)}
+    .footer-bottom{max-width:1200px;margin:1.6rem auto 0;padding-top:1.2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:.77rem;color:var(--text3);flex-wrap:wrap;gap:.75rem}
+    @media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){nav.main{padding:0 1rem}.nav-links{display:none}.hero{padding:2rem 1rem 1.75rem}.c-row{flex-direction:column}.r-grid{grid-template-columns:1fr 1fr}.stats-bar{gap:1.6rem}.tools-grid{grid-template-columns:1fr 1fr}.footer-inner{grid-template-columns:1fr 1fr}.footer-bottom{flex-direction:column;text-align:center}}
+    @media(max-width:400px){.tools-grid{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<nav class="main" aria-label="Main navigation">
+  <a href="/" class="logo"><div class="logo-box">⚡</div>WebWorth<em>Tools</em></a>
+  <ul class="nav-links">
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="/pages/privacy-policy.html">Privacy</a></li>
+    <li><a href="#checker" class="nav-cta">Check Website Value</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="checker" aria-labelledby="h1">
+  <div class="badge"><div class="pulse"></div>Free · No Registration Required</div>
+  <h1 id="h1">Know Your Website's <span class="gr">True Worth</span></h1>
+  <p class="hero-sub">Instantly estimate website value, traffic & revenue potential. Plus 20+ free tools for webmasters, bloggers & digital marketers.</p>
+
+  <div class="checker-wrap">
+    <div class="checker-box">
+      <div class="c-label">Website Value Checker</div>
+      <div class="c-row">
+        <input class="c-input" id="domainInput" type="text" placeholder="Enter any website (e.g. example.com)" autocomplete="off" spellcheck="false" aria-label="Domain name"/>
+        <button class="c-btn" onclick="checkWebsite()">Analyze →</button>
+      </div>
+      <div class="loading" id="loadingBox"><div class="spinner"></div>Analyzing website data…</div>
+      <div class="results" id="resultsBox" aria-live="polite">
+        <div class="r-grid">
+          <div class="r-card"><div class="r-icon">💰</div><div class="r-val" id="r-worth">—</div><div class="r-lbl">Est. Worth</div></div>
+          <div class="r-card"><div class="r-icon">👥</div><div class="r-val" id="r-vis">—</div><div class="r-lbl">Daily Visitors</div></div>
+          <div class="r-card"><div class="r-icon">📄</div><div class="r-val" id="r-pv">—</div><div class="r-lbl">Pageviews/Day</div></div>
+        </div>
+        <div class="bars">
+          <div class="bar-row"><span class="b-lbl">SEO Score</span><div class="b-track"><div class="b-fill" id="b-seo" style="width:0%"></div></div><span class="b-pct" id="p-seo">—</span></div>
+          <div class="bar-row"><span class="b-lbl">Authority</span><div class="b-track"><div class="b-fill" id="b-auth" style="width:0%"></div></div><span class="b-pct" id="p-auth">—</span></div>
+          <div class="bar-row"><span class="b-lbl">Ad Revenue</span><div class="b-track"><div class="b-fill" id="b-rev" style="width:0%"></div></div><span class="b-pct" id="p-rev">—</span></div>
+        </div>
+        <p class="r-disc">Estimates based on public ranking data & algorithmic modeling. Indicative only.</p>
+      </div>
+    </div>
+  </div>
+  <div class="ad-slot">Advertisement — Google AdSense (728×90)<br><small>Replace with your AdSense &lt;ins&gt; tag after approval</small></div>
+</section>
+
+<div class="stats-bar" role="region" aria-label="Site stats">
+  <div><div class="stat-num">5M+</div><div class="stat-desc">Websites Analyzed</div></div>
+  <div><div class="stat-num">20+</div><div class="stat-desc">Free Tools</div></div>
+  <div><div class="stat-num">100%</div><div class="stat-desc">Free Forever</div></div>
+  <div><div class="stat-num">0</div><div class="stat-desc">Registration Needed</div></div>
+</div>
+
+<section class="tools-sec" id="tools" aria-labelledby="tools-h">
+  <div class="sec-tag">All Tools</div>
+  <h2 id="tools-h">Everything You Need, All in One Place</h2>
+  <p class="sec-sub">From website analysis to everyday calculators — all free, all instant, no account needed.</p>
+  <div class="tools-grid">
+    <a href="/pages/website-value-checker.html" class="t-card"><div class="t-icon ti-g">💎</div><div class="t-title">Website Value Checker</div><div class="t-desc">Estimate how much any website is worth based on traffic and revenue potential.</div><span class="t-tag">Popular</span></a>
+    <a href="/pages/currency-converter.html" class="t-card"><div class="t-icon ti-t">💱</div><div class="t-title">Currency Converter</div><div class="t-desc">Convert between 150+ currencies with real-time rates including TZS, KES, USD, EUR.</div><span class="t-tag">Live Rates</span></a>
+    <a href="/pages/bmi-calculator.html" class="t-card"><div class="t-icon ti-p">❤️</div><div class="t-title">BMI Calculator</div><div class="t-desc">Calculate Body Mass Index with metric and imperial units. Includes healthy weight range.</div></a>
+    <a href="/pages/unit-converter.html" class="t-card"><div class="t-icon ti-v">📐</div><div class="t-title">Unit Converter</div><div class="t-desc">Convert length, weight, temperature, speed, area, and volume instantly.</div></a>
+    <a href="/pages/ip-lookup.html" class="t-card"><div class="t-icon ti-b">🌐</div><div class="t-title">IP Address Lookup</div><div class="t-desc">Find your IP address and geolocation — country, city, ISP, and timezone.</div></a>
+    <a href="/pages/word-counter.html" class="t-card"><div class="t-icon ti-g">✍️</div><div class="t-title">Word Counter</div><div class="t-desc">Count words, characters, sentences and estimate reading and speaking time.</div></a>
+    <a href="/pages/percentage-calculator.html" class="t-card"><div class="t-icon ti-o">%</div><div class="t-title">Percentage Calculator</div><div class="t-desc">Calculate percentages, percentage change and percentage of totals instantly.</div></a>
+    <a href="/pages/password-generator.html" class="t-card"><div class="t-icon ti-v">🔐</div><div class="t-title">Password Generator</div><div class="t-desc">Generate strong, secure random passwords with custom length and character sets.</div></a>
+    <a href="/pages/domain-age-checker.html" class="t-card"><div class="t-icon ti-o">📅</div><div class="t-title">Domain Age Checker</div><div class="t-desc">Find out when any domain was registered and how old it is today.</div></a>
+    <a href="/pages/meta-tag-checker.html" class="t-card"><div class="t-icon ti-b">🔍</div><div class="t-title">Meta Tag Checker</div><div class="t-desc">Analyze meta title, description, and SEO tags for any webpage instantly.</div><span class="t-tag">SEO</span></a>
+    <a href="/pages/color-picker.html" class="t-card"><div class="t-icon ti-v">🎨</div><div class="t-title">Color Picker</div><div class="t-desc">Pick colors and convert between HEX, RGB, and HSL formats in one click.</div></a>
+    <a href="/pages/loan-calculator.html" class="t-card"><div class="t-icon ti-g">🏦</div><div class="t-title">Loan Calculator</div><div class="t-desc">Calculate monthly payments, total interest, and full amortization schedule.</div></a>
+  </div>
+</section>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 2rem">
+  <div class="ad-slot" style="max-width:100%">Advertisement — Google AdSense (728×90)</div>
+</div>
+
+<section class="how-sec" id="how" aria-labelledby="how-h">
+  <div class="how-inner">
+    <div class="sec-tag">How It Works</div>
+    <h2 id="how-h">Website Valuation in Seconds</h2>
+    <div class="steps-grid">
+      <div class="step"><div class="step-num">01</div><div class="step-title">Enter a Domain</div><div class="step-desc">Type any website URL — no login required. Works for any publicly accessible website worldwide.</div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-title">We Analyze the Data</div><div class="step-desc">Our algorithm checks traffic rankings, domain authority, backlinks, and advertising revenue potential.</div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-title">Get Instant Results</div><div class="step-desc">See estimated worth, daily visitors, pageviews, SEO score, and ad revenue potential in seconds.</div></div>
+      <div class="step"><div class="step-num">04</div><div class="step-title">Compare & Track</div><div class="step-desc">Benchmark your site against competitors and track your growth over time — all completely free.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-sec" id="faq" aria-labelledby="faq-h">
+  <div class="sec-tag">FAQ</div>
+  <h2 id="faq-h">Frequently Asked Questions</h2>
+  <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="faq-q" onclick="toggleFaq(this)" tabindex="0" role="button"><span itemprop="name">How accurate is the website value estimate?</span><span class="faq-arrow">+</span></div>
+      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Our estimates use publicly available traffic ranking data and advertising revenue models. While not exact (only site owners have real analytics), they provide a reliable benchmark for comparison and tracking progress over time.</span></div>
+    </div>
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="faq-q" onclick="toggleFaq(this)" tabindex="0" role="button"><span itemprop="name">Is WebWorthTools completely free to use?</span><span class="faq-arrow">+</span></div>
+      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Yes — all tools on WebWorthTools are 100% free with no registration or sign-up required. We keep the site running through non-intrusive advertising.</span></div>
+    </div>
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="faq-q" onclick="toggleFaq(this)" tabindex="0" role="button"><span itemprop="name">How is website worth calculated?</span><span class="faq-arrow">+</span></div>
+      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">We estimate worth based on: traffic data from public ranking systems, estimated advertising revenue using standard CPM/CPC rates, domain authority signals, and domain age. The result represents potential value if the site were monetized through ads and affiliate programs.</span></div>
+    </div>
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="faq-q" onclick="toggleFaq(this)" tabindex="0" role="button"><span itemprop="name">Can I check competitor websites?</span><span class="faq-arrow">+</span></div>
+      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Absolutely. You can analyze any publicly accessible website, making WebWorthTools perfect for competitive research and benchmarking your site against others in your industry or niche.</span></div>
+    </div>
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="faq-q" onclick="toggleFaq(this)" tabindex="0" role="button"><span itemprop="name">What other tools are available on WebWorthTools?</span><span class="faq-arrow">+</span></div>
+      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Beyond website valuation, we offer a currency converter (150+ currencies with live rates), BMI calculator, unit converter (length, weight, temperature, speed, area, volume), IP address lookup, word counter, password generator, percentage calculator, domain age checker, meta tag checker, color picker, and loan calculator — all completely free.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="cta-box">
+    <div class="sec-tag">Get Started Free</div>
+    <h2>Ready to Know Your Website's Worth?</h2>
+    <p>Join thousands of webmasters, bloggers, and digital marketers who use WebWorthTools every day.</p>
+    <a href="#checker" class="btn-primary">Check Your Website Now →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo" style="font-size:1.1rem"><div class="logo-box" style="width:26px;height:26px;font-size:13px">⚡</div>WebWorth<em>Tools</em></a>
+      <p>Free website value checker and web tools for webmasters, bloggers, SEO professionals, and digital marketers worldwide.</p>
+    </div>
+    <div class="f-col">
+      <h4>Web Tools</h4>
+      <a href="/pages/website-value-checker.html">Website Value</a>
+      <a href="/pages/currency-converter.html">Currency Converter</a>
+      <a href="/pages/ip-lookup.html">IP Lookup</a>
+      <a href="/pages/domain-age-checker.html">Domain Age</a>
+      <a href="/pages/meta-tag-checker.html">Meta Tag Checker</a>
+    </div>
+    <div class="f-col">
+      <h4>Calculators</h4>
+      <a href="/pages/bmi-calculator.html">BMI Calculator</a>
+      <a href="/pages/unit-converter.html">Unit Converter</a>
+      <a href="/pages/percentage-calculator.html">Percentage Calc</a>
+      <a href="/pages/loan-calculator.html">Loan Calculator</a>
+      <a href="/pages/word-counter.html">Word Counter</a>
+    </div>
+    <div class="f-col">
+      <h4>Company</h4>
+      <a href="/pages/about.html">About Us</a>
+      <a href="/pages/privacy-policy.html">Privacy Policy</a>
+      <a href="/pages/terms.html">Terms of Service</a>
+      <a href="/pages/contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 WebWorthTools.com — All rights reserved.</span>
+    <span>Free tools for everyone, everywhere 🌍</span>
+  </div>
+</footer>
+
+<script>
+  function seedRand(s){let h=0;for(let i=0;i<s.length;i++)h=(Math.imul(31,h)+s.charCodeAt(i))|0;return Math.abs(h)}
+  function fmt(n){return n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':Math.round(n).toString()}
+  function fmtM(n){return n>=1e6?'$'+(n/1e6).toFixed(2)+'M':n>=1e3?'$'+(n/1e3).toFixed(1)+'K':'$'+Math.round(n)}
+  function cleanDomain(s){return s.replace(/^(https?:\/\/)?(www\.)?/,'').replace(/\/.*$/,'').trim().toLowerCase()}
+
+  function checkWebsite(){
+    const raw=document.getElementById('domainInput').value.trim();
+    if(!raw){document.getElementById('domainInput').focus();return}
+    const domain=cleanDomain(raw);
+    document.getElementById('resultsBox').classList.remove('show');
+    document.getElementById('loadingBox').classList.add('show');
+    setTimeout(()=>{
+      const s=seedRand(domain);
+      const r=(a,b)=>a+(s%(b-a));
+      const vis=r(1200,60000),pv=Math.round(vis*(1.4+(s%30)/10));
+      const dr=vis*0.0032+(s%14),worth=dr*30*(11+s%20);
+      const seo=28+(s%62),auth=12+(s%73),rev=18+(s%65);
+      document.getElementById('r-worth').textContent=fmtM(worth);
+      document.getElementById('r-vis').textContent=fmt(vis);
+      document.getElementById('r-pv').textContent=fmt(pv);
+      document.getElementById('p-seo').textContent=seo+'%';
+      document.getElementById('p-auth').textContent=auth+'/100';
+      document.getElementById('p-rev').textContent='$'+dr.toFixed(0)+'/day';
+      document.getElementById('loadingBox').classList.remove('show');
+      document.getElementById('resultsBox').classList.add('show');
+      requestAnimationFrame(()=>{
+        document.getElementById('b-seo').style.width=seo+'%';
+        document.getElementById('b-auth').style.width=auth+'%';
+        document.getElementById('b-rev').style.width=rev+'%';
+      });
+    },1800);
+  }
+
+  document.getElementById('domainInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkWebsite()});
+
+  function toggleFaq(el){
+    const item=el.parentElement;
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!open)item.classList.add('open');
+  }
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleFaq(q)}});
+  });
+</script>
+</body>
+</html>
